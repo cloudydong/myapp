@@ -9,6 +9,9 @@ services:
       - ./database/own:/var/lib/mysql
     ports:
       - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_password
   backend:
     #build: ./backend
     image: cloudydong/testapp:backend
@@ -17,6 +20,7 @@ services:
       - ./backend:/usr/src/app
     ports:
       - "5000:5000"
+    restart: always
     # 환경변수 설정
     environment: 
       - DBHOST=database
@@ -24,6 +28,7 @@ services:
     #build: ./frontend
     image: cloudydong/testapp:frontend
     # 연결할 외부 디렉토리 : 컨테이너 내 디렉토리
+    restart: always
     volumes:
       - ./frontend:/home/node/app
     ports:
