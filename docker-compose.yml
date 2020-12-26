@@ -24,7 +24,7 @@ services:
     #build: ./frontend
     image: cloudydong/testapp:frontend
     # 연결할 외부 디렉토리 : 컨테이너 내 디렉토리
-    # volumes:
-    #   - ./frontend:/home/node/app
+    volumes:
+      - ./frontend:/home/node/app
     ports:
-      - "9000:3000"
+      - "3000:3000"
